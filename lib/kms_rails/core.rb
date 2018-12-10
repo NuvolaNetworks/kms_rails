@@ -61,7 +61,7 @@ module KmsRails
         @base_key_id.call
       when String
         # if UUID or direct alias or an arn
-        if @base_key_id =~ /\A\w{8}-\w{4}-\w{4}-\w{4}-\w{12}\z/ || @base_key_id.start_with?('alias/') || @base_key_id.start_with('arn:')
+        if @base_key_id =~ /\A\w{8}-\w{4}-\w{4}-\w{4}-\w{12}\z/ || @base_key_id.start_with?('alias/') || @base_key_id.start_with?('arn:')
           @base_key_id 
         else
           'alias/' + KmsRails.configuration.alias_prefix + @base_key_id
